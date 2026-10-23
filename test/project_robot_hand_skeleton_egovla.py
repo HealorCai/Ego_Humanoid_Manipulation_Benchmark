@@ -1,19 +1,5 @@
 #!/usr/bin/env python3
-"""
-Project fingertip positions onto dataset images without running simulation.
-
-Example:
-python test/project_robot_hand_skeleton_egovla.py \
-  --hdf5 /cpfs04/user/caizetao/data/EgoVLA_SIM/Close-Drawer/episode_0.hdf5 \
-  --video_out /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/output/skel_episode_0.mp4 \
-  --fps 30 \
-  --use_fk_hand \
-  --joint_names_file /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/test/joint_names.txt \
-  --usd_path /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/source/extensions/humanoid.tasks/humanoid/tasks/data/h1/h1_inspire_convex_decomp.usd \
-  --skeleton_cfg /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/test/config/h1_inspire_both_hands.yaml
-
-
-"""
+"""Project hand skeletons from a recorded HDF5 episode. See test/README.md."""
 
 import argparse
 import os

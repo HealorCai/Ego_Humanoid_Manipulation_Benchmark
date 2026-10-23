@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
-"""
-Save HDF5 images to a video using imageio.
-
-Example:
-python test/hdf5_images_to_video.py \
-  --input /cpfs04/user/caizetao/data/EgoVLA_SIM/Close-Drawer/episode_1.hdf5 \
-  --dataset observations/images/main \
-  --output /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/output/episode_1.mp4 \
-  --fps 30
-"""
+"""Export recorded HDF5 images to video. See test/README.md."""
 
 import argparse
 
@@ -25,7 +16,7 @@ def main() -> None:
     parser.add_argument("--fps", type=int, default=30, help="Video FPS")
     args = parser.parse_args()
 
-    os.makedirs(os.path.dirname(args.output), exist_ok=True)
+    os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
 
     with h5py.File(args.input, "r") as f:
         if args.dataset not in f:

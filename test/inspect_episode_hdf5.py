@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""
-Inspect an HDF5 file: print groups, datasets, shapes, dtypes, and attributes.
-
-python test/inspect_episode_hdf5.py /cpfs04/user/caizetao/data/EgoVLA_SIM/Flip-Mug/episode_0.hdf5
-
-"""
+"""Inspect HDF5 datasets and attributes. See test/README.md."""
 
 import argparse
 from typing import Any
@@ -77,36 +72,7 @@ def main() -> None:
         print(f"file: {args.path}")
         _print_attrs(f, indent=2)
         f.visititems(lambda name, obj: _visit(name, obj, args.sample))
-        breakpoint()
 
 
 if __name__ == "__main__":
     main()
-
-'''
-(egovlasim) root@dsw-387707-5fb9d9d5cc-x6xp5:~/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark# python test/inspect_episode_hdf5.py /cpfs04/user/caizetao/data/EgoVLA_SIM/Flip-Mug/episode_0.hdf5
-file: /cpfs04/user/caizetao/data/EgoVLA_SIM/Flip-Mug/episode_0.hdf5
-  @sim: True
-dataset: action
-  dataset: shape=(155, 50) dtype=float32
-group: observations
-group: observations/images
-dataset: observations/images/main
-  dataset: shape=(155, 384, 384, 3) dtype=uint8
-dataset: observations/left_ee_pose
-  dataset: shape=(155, 7) dtype=float32
-dataset: observations/left_finger_tip_pos
-  dataset: shape=(155, 5, 3) dtype=float32
-dataset: observations/left_target_ee_pose
-  dataset: shape=(155, 7) dtype=float32
-dataset: observations/qpos
-  dataset: shape=(155, 50) dtype=float32
-dataset: observations/qvel
-  dataset: shape=(155, 50) dtype=float32
-dataset: observations/right_ee_pose
-  dataset: shape=(155, 7) dtype=float32
-dataset: observations/right_finger_tip_pos
-  dataset: shape=(155, 5, 3) dtype=float32
-dataset: observations/right_target_ee_pose
-  dataset: shape=(155, 7) dtype=float32
-'''

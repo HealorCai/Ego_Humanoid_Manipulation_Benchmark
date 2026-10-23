@@ -1,6 +1,4 @@
-'''
-python test/summarize_skeleton_videos.py
-'''
+"""Summarize video counts, frames, and durations by task. See test/README.md."""
 
 import argparse
 import json
@@ -151,7 +149,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--root",
-        default="/cpfs04/user/caizetao/data/EgoVLA_SIM/skeleton_video_384x384_v2",
+        default="data/EgoVLA_SIM/skeleton_video_384x384",
         help="Dataset root directory.",
     )
     parser.add_argument(
@@ -162,7 +160,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--csv",
-        default="test/skeleton_video_stats.csv",
+        default="output/skeleton_video_stats.csv",
         help="Output CSV path.",
     )
     args = parser.parse_args()
@@ -219,6 +217,7 @@ def main() -> int:
         f"ALL,(all),{grand_episodes},{grand_frames},{grand_seconds:.3f},{avg_all:.3f},{_format_seconds(avg_all)}"
     )
 
+    os.makedirs(os.path.dirname(args.csv) or ".", exist_ok=True)
     with open(args.csv, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
         f.write("\n")

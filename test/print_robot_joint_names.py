@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""
-Print robot.data.joint_names for a given task.
-
-Example:
-python test/print_robot_joint_names.py --task Humanoid-Close-Drawer-v0 --num_envs 1 --headless --enable_cameras --out /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/test/joint_names.txt
-"""
+"""Print simulator robot joint names. See test/README.md."""
 def force_conda_aws():
     import sys
 
@@ -70,6 +65,8 @@ def main() -> None:
         print(name)
 
     if args_cli.out:
+        from pathlib import Path
+        Path(args_cli.out).parent.mkdir(parents=True, exist_ok=True)
         with open(args_cli.out, "w", encoding="utf-8") as f:
             for name in joint_names:
                 f.write(f"{name}\n")

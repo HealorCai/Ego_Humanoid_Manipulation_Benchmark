@@ -1,44 +1,5 @@
 #!/usr/bin/env python3
-"""
-Batch-process all EgoVLA_SIM HDF5 files and write skeleton videos.
-
-Example:
-python test/project_robot_hand_skeleton_egovla_ds.py \
-  --root /cpfs04/user/caizetao/data/EgoVLA_SIM/raw_hdf5 \
-  --out_root /cpfs04/user/caizetao/data/EgoVLA_SIM/skeleton_video_384x384 \
-  --workers 32 \
-  --use_fk_hand \
-  --joint_names_file /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/test/joint_names.txt \
-  --usd_path /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/source/extensions/humanoid.tasks/humanoid/tasks/data/h1/h1_inspire_convex_decomp.usd \
-  --skeleton_cfg /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/test/config/h1_inspire_both_hands.yaml \
-  --skip_existing
-
-只存归一化关键点、不输出视频：
-python test/project_robot_hand_skeleton_egovla_ds.py \
-    --root /cpfs04/user/caizetao/data/EgoVLA_SIM/raw_hdf5 \
-    --keypoints_out_root /cpfs04/user/caizetao/data/EgoVLA_SIM/skeleton_keypoints \
-    --workers 32 \
-    --use_fk_hand \
-    --joint_names_file /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/test/joint_names.txt \
-    --norm_keypoints \
-    --keypoints_include_z \
-    --usd_path /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/source/extensions/humanoid.tasks/humanoid/tasks/data/h1/h1_inspire_convex_decomp.usd \
-    --no_video \
-    --skeleton_cfg test/config/h1_inspire_both_hands.yaml
-
-python test/project_robot_hand_skeleton_egovla_ds.py \
-    --root /cpfs04/user/caizetao/data/EgoVLA_SIM/raw_hdf5 \
-    --out_root /cpfs04/user/caizetao/data/EgoVLA_SIM/skeleton_video_384x384_v2 \
-    --keypoints_out_root /cpfs04/user/caizetao/data/EgoVLA_SIM/skeleton_keypoints \
-    --norm_keypoints \
-    --keypoints_include_z \
-    --workers 32 \
-    --use_fk_hand \
-    --joint_names_file /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/test/joint_names.txt \
-    --usd_path /cpfs04/user/caizetao/projects/benchmark_ws/Ego_Humanoid_Manipulation_Benchmark/source/extensions/humanoid.tasks/humanoid/tasks/data/h1/h1_inspire_convex_decomp.usd \
-    --skeleton_cfg test/config/h1_inspire_both_hands_v2.yaml \
-    --skip_existing
-"""
+"""Batch-export skeleton videos and keypoints from HDF5 episodes. See test/README.md."""
 
 from __future__ import annotations
 

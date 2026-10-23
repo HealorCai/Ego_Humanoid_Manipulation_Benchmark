@@ -1,24 +1,5 @@
 #!/usr/bin/env python3
-"""Visualize exported hand keypoints on top of EgoVLA_SIM images.
-
-Reads:
-- raw HDF5: contains images at --hdf5_images (default observations/images/main)
-- keypoints HDF5: contains dataset 'keypoints' with shape (T, 2, 21, D)
-  - D=2 for (x,y)
-  - D=3 for (x,y,z)
-  - Missing points are encoded as -1
-  - Attribute 'mode' is either 'pixel' or 'norm'
-
-Writes:
-- an mp4 with keypoints overlaid.
-
-Example:
-python test/visualize_hand_keypoints_on_video.py \
-  --raw_hdf5 /cpfs04/user/caizetao/data/EgoVLA_SIM/raw_hdf5/Insert-And-Unload-Cans/episode_2.hdf5 \
-  --keypoints_hdf5 /cpfs04/user/caizetao/data/EgoVLA_SIM/skeleton_keypoints/Insert-And-Unload-Cans/episode_2.hdf5 \
-  --out_mp4 output/skeleton_keypoints/Insert-And-Unload-Cans/episode_2_debug.mp4 \
-  --max_frames 300
-"""
+"""Overlay exported hand keypoints on recorded images. See test/README.md."""
 
 from __future__ import annotations
 
@@ -102,7 +83,6 @@ def main() -> None:
     out_mp4 = Path(args.out_mp4)
     out_mp4.parent.mkdir(parents=True, exist_ok=True)
 
-    breakpoint()
 
     with h5py.File(raw_hdf5, 'r') as f_raw, h5py.File(kp_hdf5, 'r') as f_kp:
         if args.hdf5_images not in f_raw:

@@ -1,0 +1,3 @@
+[submodule "source/extensions/humanoid.tasks/humanoid/tasks/data"]
+	path = source/extensions/humanoid.tasks/humanoid/tasks/data
+	url = git@hf.co:datasets/EgoVLA/Assets
